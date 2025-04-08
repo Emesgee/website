@@ -3,43 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Protected Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
-      background-color: #f5f5f5;
+      background-color: #f0f0f0;
     }
-    #content {
-      display: none;
-    }
-    input[type="password"], input[type="text"] {
+    #content { display: none; }
+    input, button {
       padding: 8px;
-      margin: 5px 0;
+      margin-top: 5px;
+      font-size: 1rem;
       width: 100%;
       max-width: 300px;
     }
-    button {
-      padding: 8px 12px;
-      margin-top: 5px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+    ul { list-style: none; padding: 0; }
     li {
       background: #fff;
-      margin: 5px 0;
       padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 5px;
     }
     code {
       background: #eee;
       padding: 2px 4px;
-      border-radius: 4px;
+      border-radius: 3px;
     }
   </style>
 </head>
@@ -47,78 +39,31 @@
 
 <div id="login">
   <h2>Enter Password</h2>
-  <input type="password" id="passwordInput" placeholder="Password" />
+  <input
+    type="password"
+    id="passwordInput"
+    placeholder="Password"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="none"
+    spellcheck="false"
+  />
   <button onclick="checkPassword()">Enter</button>
-  <p id="error" style="color:red;"></p>
+  <p id="error" style="color:red; white-space:pre-wrap;"></p>
 </div>
 
 <div id="content">
-  <h1>Welcome to the Protected Page</h1>
-  <p>This is the secret content only visible to those who know the password.</p>
+  <h1>✅ Welcome!</h1>
+  <p>This content is protected and only visible after entering the correct password.</p>
 
   <hr>
-  <h2>📚 Tutorial: How This Site Was Built</h2>
+
+  <h2>📚 Tutorial: How This Was Built</h2>
   <ol>
-    <li>Created an HTML template with password protection using JavaScript</li>
-    <li>Stored the real password in a VeraCrypt volume</li>
-    <li>Used a Python script to hash the password and inject it into this HTML</li>
-    <li>Deployed the final version to GitHub Pages</li>
+    <li>HTML + JS template with password protection using SHA-256</li>
+    <li>Password stored in VeraCrypt volume</li>
+    <li>Python script injects the hashed password</li>
+    <li>Final output served via GitHub Pages</li>
   </ol>
 
-  <h3>🔧 To Rebuild Locally</h3>
-  <p>Mount your VeraCrypt volume, then run:</p>
-  <pre><code>python generate_html.py</code></pre>
-
-  <h3>🛡️ Security Tips</h3>
-  <ul>
-    <li>Never push the real password or volume to GitHub</li>
-    <li>Always use <code>.gitignore</code> to exclude sensitive files</li>
-    <li>Use hashed password checking to keep things client-side only</li>
-  </ul>
-
-  <hr>
-  <h2>📝 To-Do List</h2>
-  <div id="todoApp">
-    <input type="text" id="newTask" placeholder="Add a new task">
-    <button onclick="addTask()">Add</button>
-    <ul id="taskList"></ul>
-  </div>
-</div>
-
-<script>
-  const correctHash = "1c8bfe8f801d79745c4631d09fff36c82aa37fc4cce4fc946683d7b336b63032"; // Will be replaced by the Python script
-
-  async function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
-    const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-    if (hashHex === correctHash) {
-      document.getElementById("login").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    } else {
-      document.getElementById("error").innerText = "Incorrect password.";
-    }
-  }
-
-  function addTask() {
-    const taskInput = document.getElementById("newTask");
-    const taskText = taskInput.value.trim();
-    if (taskText === "") return;
-
-    const li = document.createElement("li");
-    li.textContent = taskText;
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "❌";
-    deleteBtn.onclick = () => li.remove();
-    li.appendChild(deleteBtn);
-
-    document.getElementById("taskList").appendChild(li);
-    taskInput.value = "";
-  }
-</script>
-
-</body>
-</html>
+  <pre><code>
