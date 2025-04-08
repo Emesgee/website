@@ -1,0 +1,22 @@
+# Ignore VeraCrypt volume (encrypted container)
+secret_data.hc
+
+# Ignore any plain text password files (just in case)
+*.txt
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Python build artifacts (if using Python)
+__pycache__/
+*.pyc
+
+# Optional: if you mount VeraCrypt to a specific path
+/O/
+/Volumes/
+/media/
+
+/*.log
+
+.vscode/
