@@ -2,23 +2,29 @@ import hashlib
 from pathlib import Path
 
 # === CONFIG ===
-# Adjust these paths if needed
-password_file = Path("O:\\Github\\website-login.txt")
+# Set these to your actual paths
+password_file = Path(r"O:\Github\website-login.txt")     # Inside VeraCrypt
 template_file = Path("template.html")
 output_file = Path("index.html")
-print(f"Looking for password file at: {password_file.resolve()}")
+cached_hash_file = Path(".password_hash")                # Hidden file to store fallback hash
 
-# === STEP 1: Read the password ===
-if not password_file.exists():
-    print(f"❌ Password file not found at: {password_file}")
+# === STEP 1: Get password hash ===
+if password_file.exists():
+    print("🔐 Reading password from VeraCrypt volume...")
+    password = password_file.read_text().strip()
+    hashed = hashlib.sha256(password.encode()).hexdigest()
+    
+    # Cache the hash for future use when volume isn't mounted
+    cached_hash_file.write_text(hashed)
+    print("✅ Password hashed and cached.")
+elif cached_hash_file.exists():
+    print("⚠️ VeraCrypt not mounted. Using cached password hash...")
+    hashed = cached_hash_file.read_text().strip()
+else:
+    print("❌ No password file found, and no cached hash available.")
     exit(1)
 
-password = password_file.read_text().strip()
-
-# === STEP 2: Hash it using SHA-256 ===
-hashed = hashlib.sha256(password.encode()).hexdigest()
-
-# === STEP 3: Read HTML template and replace the placeholder ===
+# === STEP 2: Read template and inject hash ===
 if not template_file.exists():
     print(f"❌ Template file not found at: {template_file}")
     exit(1)
@@ -26,6 +32,6 @@ if not template_file.exists():
 html = template_file.read_text()
 html = html.replace("{{PASSWORD_HASH}}", hashed)
 
-# === STEP 4: Write to index.html ===
+# === STEP 3: Write to index.html ===
 output_file.write_text(html)
-print(f"✅ index.html generated successfully with hashed password.")
+print(f"✅ index.html generated successfully.")

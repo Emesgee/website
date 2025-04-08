@@ -19,4 +19,5 @@ __pycache__/
 
 /*.log
 
-.vscode/
+# Cache for offline builds
+.password_hash
