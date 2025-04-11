@@ -76,17 +76,30 @@
 </div>
 
 <div id="content">
-  <h1>📝 To-Do List <span class="heart">❤</span></h1>
-  <div>
-    <input type="text" id="newTask" placeholder="Add a task" />
-    <button onclick="addTask()">Add</button>
-    <ul id="taskList"></ul>
-  </div>
+  <h1>📋 Dashboard <span class="heart">❤</span></h1>
 
-  <div>
-    <h1>Outlook Calendar</h1>
-    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FCopenhagen&showPrint=0&src=bS5zLmdoYWRiYW5AZ21haWwuY29t&src=cWpnOW5tazdiNTEwOG43bW1hbjRlcHVkNW10cGFlNG9AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300&color=%237CB342" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+    
+    <!-- 📅 CALENDAR SECTION -->
+    <div style="flex: 1; min-width: 300px;">
+      <h2>Outlook Calendar</h2>
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FCopenhagen&showPrint=0&src=bS5zLmdoYWRiYW5AZ21haWwuY29t&src=cWpnOW5tazdiNTEwOG43bW1hbjRlcHVkNW10cGFlNG9AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300&color=%237CB342"
+        style="border:solid 1px #777; width: 100%; height: 600px;" 
+        frameborder="0" 
+        scrolling="no">
+      </iframe>
+    </div>
+
+    <!-- ✅ TO-DO LIST SECTION -->
+    <div style="flex: 1; min-width: 300px;">
+      <h2>To-Do List</h2>
+      <input type="text" id="newTask" placeholder="Add a task" />
+      <button onclick="addTask()">Add</button>
+      <ul id="taskList"></ul>
+    </div>
+
   </div>
+</div>
 
 <script>
   const correctHash = "{{PASSWORD_HASH}}";
