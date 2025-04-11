@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+    margin: 0;
+    background-color: #f9f9f9;
+  }
+  
+  #login {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  #content {
+    display: none;
+  }
+  
+  input, button {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .calendar, .todo {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .todo ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .todo li {
+    background: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .heart {
+    color: red;
+    animation: beat 1s infinite;
+    display: inline-block;
+    transform-origin: center;
+  }
+  
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+  
