@@ -1,27 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    padding: 2rem;
-    margin: 0;
     background-color: #f9f9f9;
-  }
-  
-  #login {
-    max-width: 300px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 0;
+    padding: 2rem;
   }
   
   #content {
     display: none;
-  }
-  
-  input, button {
-    padding: 10px;
-    font-size: 1rem;
-    margin-top: 5px;
-    width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
   }
   
   .dashboard {
@@ -37,12 +22,27 @@ body {
     min-width: 300px;
   }
   
-  .todo ul {
+  iframe {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  input, button {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+  
+  ul {
     list-style: none;
     padding: 0;
   }
   
-  .todo li {
+  li {
     background: #fff;
     padding: 10px;
     margin: 5px 0;

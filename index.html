@@ -22,26 +22,30 @@
 
   <div id="content">
     <div class="dashboard">
-
-      <!-- Calendar Column -->
+      
+      <!-- 📅 CALENDAR LEFT -->
       <div class="calendar">
-        <h2>📅 My Calendar</h2>
+        <h2>📅 Outlook Calendar</h2>
         <iframe 
-          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FCopenhagen&showPrint=0&src=bS5zLmdoYWRiYW5AZ21haWwuY29t&src=cWpnOW5tazdiNTEwOG43bW1hbjRlcHVkNW10cGFlNG9AaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300&color=%237CB342"
-          width="100%" height="600" frameborder="0" scrolling="no">
+          src="https://outlook.live.com/owa/calendar/your-calendar-link/index.html"
+          width="100%" 
+          height="600" 
+          frameborder="0" 
+          scrolling="no">
         </iframe>
       </div>
-
-      <!-- To-Do Column -->
+  
+      <!-- ✅ TO-DO LIST RIGHT -->
       <div class="todo">
-        <h2>📝 To-Do List</h2>
+        <h2>📝 To-Do List <span class="heart">❤</span></h2>
         <input type="text" id="newTask" placeholder="Add a task" />
         <button onclick="addTask()">Add</button>
         <ul id="taskList"></ul>
       </div>
-
+  
     </div>
   </div>
+  
 
   <script>
     const correctHash = "1c8bfe8f801d79745c4631d09fff36c82aa37fc4cce4fc946683d7b336b63032";
