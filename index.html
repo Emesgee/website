@@ -82,7 +82,17 @@
     <button onclick="addTask()">Add</button>
     <ul id="taskList"></ul>
   </div>
-</div>
+
+  <div>
+    <h1>Outlook Calendar</h1>
+    <iframe 
+      src="  https://outlook.live.com/owa/calendar/b3c387ec-cd93-468a-b124-c269e6e8c59b/db01dd86-9643-4e17-a520-811670d163ca/cid-315CA704C4358CBD/index.html" 
+      width="800" 
+      height="600" 
+      frameborder="0" 
+      scrolling="no">
+    </iframe>
+  </div>
 
 <script>
   const correctHash = "1c8bfe8f801d79745c4631d09fff36c82aa37fc4cce4fc946683d7b336b63032";
@@ -113,6 +123,8 @@
       debugLog("❌ Error: " + err.message);
     }
   }
+
+  
 
   function addTask() {
     const taskInput = document.getElementById("newTask");
